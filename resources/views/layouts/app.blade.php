@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="../../storage/cs.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LU CS Alumni Tracker</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-maingreen fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">
-                logo
+                <img src="../../storage/cs-logo.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 my-3 align-self-center">
-                    <img class="mx-auto d-block" src="https://lu.edu.ph/wp-content/uploads/2016/10/logo-1.png" alt="logo">
+                    <img src="../../storage/cs-logo.png" alt="logo">
                 </div>
                 <div class="col-lg-4 my-3">
                     <p class="fw-bold text-uppercase"> Contact Us<p>

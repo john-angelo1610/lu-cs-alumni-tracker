@@ -106,7 +106,7 @@
             <hr>
             <h3 class="text-uppercase text-center">Educational Background</h3>
             <hr>
-            <p>Primary <em class="text-warning">(required)</em></p>
+            <p>Primary</p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
                     <input class="form-control" type="text" value="Grade Six" disabled readonly>
@@ -118,12 +118,12 @@
                     <input type="text" class="form-control" placeholder="School Year" name="primary_batch">
                 </div>
             </div>
-            <p>Secondary <em class="text-warning">(required)</em></p>
+            <p>Secondary</p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
                     <select class="form-select" aria-label="k12_basic" id="k12_basic" name="k12_basic">
-                        <option selected value="1">Fourth Year</option>
-                        <option value="2">Grade 12</option>
+                        <option selected value="0">Fourth Year</option>
+                        <option value="1">Grade 12</option>
                     </select>
                 </div>
                 <div class="col-md">
@@ -136,7 +136,7 @@
             <p>Bachelor's Degree <em class="text-warning">(required)</em></p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="Course" name="bacherlor_course">
+                    <input type="text" class="form-control" placeholder="Course" name="bachelor_course">
                 </div>
                 <div class="col-md">
                     <input type="text" class="form-control" placeholder="School" name="bachelor">
@@ -227,22 +227,24 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="job_possition_current" class="col-md-3 col-form-label">Job and Level Position (Current Job)</label>
+                <label for="current_job_position" class="col-md-3 col-form-label">Job and Level Position (Current Job)</label>
                 <div class="col-md-9">
-                    <select class="form-select" aria-label="job_possition_current" id="job_possition_current" name="job_possition_current">
-                        <option selected value="1">Rank & File</option>
+                    <select class="form-select" aria-label="current_job_position" id="current_job_position" name="current_job_position">
+                        <option value="1">Rank & File</option>
                         <option value="2">Supervisory</option>
                         <option value="3">Managerial</option>
+                        <option selected value="0">Other</option>
                     </select>
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="job_possition_first" class="col-md-3 col-form-label">Job and Level Position (First Job)</label>
+                <label for="first_job_position" class="col-md-3 col-form-label">Job and Level Position (First Job)</label>
                 <div class="col-md-9">
-                    <select class="form-select" aria-label="job_possition_first" id="job_possition_first" name="job_possition_first">
-                        <option selected value="1">Rank & File</option>
+                    <select class="form-select" aria-label="first_job_position" id="first_job_position" name="first_job_position">
+                        <option value="1">Rank & File</option>
                         <option value="2">Supervisory</option>
                         <option value="3">Managerial</option>
+                        <option selected value="0">Other</option>
                     </select>
                 </div>
             </div>
@@ -283,7 +285,7 @@
             <div class="unemployed">
                 <p class="text-warning text-uppercase">Not Employed</p>
                 <div class="row align-items-center mb-3">
-                    <label for="job_possition_first" class="col-md-3 col-form-label">Reason</label>
+                    <label for="reason" class="col-md-3 col-form-label">Reason</label>
                     <div class="col-md-9">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="reason" id="continue_study" value="continue_study">
@@ -318,6 +320,9 @@
                             <label class="form-check-label" for="others">Others</label>
                         </div>
                     </div>
+                </div>
+                <div class="row align-items-center mb-3">
+                    <input id="unemployed_other_reason" type="text" class="form-control" placeholder="Other reason">
                 </div>
             </div>
             {{-- Retired --}}

@@ -64,8 +64,13 @@
             </div>
             <p class="fw-bold">Secondary:</p>
             <div class="d-flex align-items-center mb-3">
-                <p></p>
-                <p>4th year High School</p>
+                <p>
+                    @if ($alumnus->k12_basic == 0)
+                        4th year High School
+                    @else
+                        Grade 12
+                    @endif
+                </p>
                 <p class="mx-3">{{$alumnus->secondary_school}}</p>
                 <p>{{$alumnus->secondary_year}}</p>
             </div>
@@ -122,11 +127,31 @@
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Job and Level Position (Current Job):</p>
-                <p class="mx-2">{{$alumnus->current_job_position}}</p>
+                <p class="mx-2">
+                    @if ($alumnus->current_job_position == 1)
+                        Rank & File
+                    @elseif ($alumnus->current_job_position == 2)
+                        Supervisory
+                    @elseif ($alumnus->current_job_position == 3)
+                        Supervisory
+                    @else
+                        Other
+                    @endif
+                </p>
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Job and Level Position (First Job):</p>
-                <p class="mx-2">{{$alumnus->first_job_position}}</p>
+                <p class="mx-2">
+                    @if ($alumnus->first_job_position == 1)
+                        Rank & File
+                    @elseif ($alumnus->first_job_position == 2)
+                        Supervisory
+                    @elseif ($alumnus->first_job_position == 3)
+                        Supervisory
+                    @else
+                        Other
+                    @endif
+                </p>
             </div>
             @if (strtolower($alumnus->employment_status) == 'self-employed' || ($alumnus->employment_status) == 'retired' || strtolower($alumnus->employment_status) == 'unemployed')
                 <div class="d-flex align-items-center mb-3">

@@ -107,7 +107,7 @@
             <hr>
             <h3 class="text-uppercase text-center">Educational Background</h3>
             <hr>
-            <p>Primary <em class="text-warning">(required)</em></p>
+            <p>Primary</p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
                     <input class="form-control" type="text" value="Grade Six" disabled readonly>
@@ -119,12 +119,12 @@
                     <input type="text" class="form-control" placeholder="School Year" name="primary_batch" value="{{$alumnus->primary_year}}">
                 </div>
             </div>
-            <p>Secondary <em class="text-warning">(required)</em></p>
+            <p>Secondary</p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
                     <select class="form-select" aria-label="k12_basic" id="k12_basic" name="k12_basic">
-                        <option value="Fourth Year" {{strtolower($alumnus->k12_basic) == 'fourth year' ? 'selected' : ''}}>Fourth Year</option>
-                        <option value="Grade 12" {{strtolower($alumnus->k12_basic) == 'grade 12' ? 'selected' : ''}}>Grade 12</option>
+                        <option value="0" {{$alumnus->k12_basic == 0 ? 'selected' : ''}}>Fourth Year</option>
+                        <option value="1" {{$alumnus->k12_basic == 1 ? 'selected' : ''}}>Grade 12</option>
                     </select>
                 </div>
                 <div class="col-md">
@@ -137,16 +137,15 @@
             <p>Bachelor's Degree <em class="text-warning">(required)</em></p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="Course" name="bacherlor_course" value="{{$alumnus->bachelor_course}}">
+                    <input type="text" class="form-control" placeholder="Course" name="bachelor_course" value="{{$alumnus->bachelor_course}}">
                 </div>
                 <div class="col-md">
                     <input type="text" class="form-control" placeholder="School" name="bachelor" value="{{$alumnus->bachelor_school}}">
                 </div>
                 <div class="col-md">
                     <select class="form-select" aria-label="bachelor_batch" id="bachelor_batch" name="bachelor_batch">
-                        <option selected disabled>Select school year</option>
                         @foreach ($school_years as $school_year)
-                            <option value="{{$school_year}}">{{$school_year}}</option>
+                            <option {{$alumnus->bachelor_year == $school_year ? 'selected' : ''}} value="{{$school_year}}">{{$school_year}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -231,9 +230,10 @@
                 <label for="current_job_position" class="col-md-3 col-form-label">Job and Level Position (Current Job)</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="current_job_position" id="current_job_position" name="current_job_position">
-                        <option value="Rank & File" {{strtolower($alumnus->current_job_position) == 'rank & file' ? 'selected' : ''}}>Rank & File</option>
-                        <option value="Supervisory" {{strtolower($alumnus->current_job_position) == 'supervisory' ? 'selected' : ''}}>Supervisory</option>
-                        <option value="Managerial" {{strtolower($alumnus->current_job_position) == 'managerial' ? 'selected' : ''}}>Managerial</option>
+                        <option value="1" {{strtolower($alumnus->current_job_position) == 1 ? 'selected' : ''}}>Rank & File</option>
+                        <option value="2" {{strtolower($alumnus->current_job_position) == 2 ? 'selected' : ''}}>Supervisory</option>
+                        <option value="3" {{strtolower($alumnus->current_job_position) == 3 ? 'selected' : ''}}>Managerial</option>
+                        <option value="0" {{strtolower($alumnus->current_job_position) == 0 ? 'selected' : ''}}>Other</option>
                     </select>
                 </div>
             </div>
@@ -241,9 +241,10 @@
                 <label for="first_job_position" class="col-md-3 col-form-label">Job and Level Position (First Job)</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="first_job_position" id="first_job_position" name="first_job_position">
-                        <option value="Rank & File" {{strtolower($alumnus->first_job_position) == 'rank & file' ? 'selected' : ''}}>Rank & File</option>
-                        <option value="Supervisory" {{strtolower($alumnus->first_job_position) == 'supervisory' ? 'selected' : ''}}>Supervisory</option>
-                        <option value="Managerial" {{strtolower($alumnus->first_job_position) == 'managerial' ? 'selected' : ''}}>Managerial</option>
+                        <option value="1" {{strtolower($alumnus->first_job_position) == 1 ? 'selected' : ''}}>Rank & File</option>
+                        <option value="2" {{strtolower($alumnus->first_job_position) == 2 ? 'selected' : ''}}>Supervisory</option>
+                        <option value="3" {{strtolower($alumnus->first_job_position) == 3 ? 'selected' : ''}}>Managerial</option>
+                        <option value="0" {{strtolower($alumnus->current_job_position) == 0 ? 'selected' : ''}}>Other</option>
                     </select>
                 </div>
             </div>
@@ -284,11 +285,11 @@
             <div class="unemployed">
                 <p class="text-warning text-uppercase">Not Employed</p>
                 <div class="row align-items-center mb-3">
-                    <label for="job_possition_first" class="col-md-3 col-form-label">Reason</label>
+                    <label for="reason" class="col-md-3 col-form-label">Reason</label>
                     <div class="col-md-9">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="reason" id="continue_study" value="continued study" {{strtolower($alumnus->unemployed_reason) == 'continued study' ? 'checked' : ''}}>
-                            <label class="form-check-label" for="continue_study">Continued Study</label>
+                            <input class="form-check-input" type="radio" name="reason" id="continued_study" value="continued study" {{strtolower($alumnus->unemployed_reason) == 'continued study' ? 'checked' : ''}}>
+                            <label class="form-check-label" for="continued_study">Continued Study</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="reason" id="applying" value="applying for a job" {{strtolower($alumnus->unemployed_reason) == 'applying for a job' ? 'checked' : ''}}>
@@ -315,10 +316,13 @@
                             <label class="form-check-label" for="lack_exprience">Lack of Work Exprience</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="reason" id="others" value="others" {{strtolower($alumnus->unemployed_reason) == 'others' ? 'checked' : ''}}>
+                            <input class="form-check-input" type="radio" name="reason" id="others" value="others">
                             <label class="form-check-label" for="others">Others</label>
                         </div>
                     </div>
+                </div>
+                <div class="row align-items-center mb-3">
+                    <input id="unemployed_other_reason" type="text" class="form-control" placeholder="Other reason" value="{{$alumnus->unemployed_reason}}">
                 </div>
             </div>
             {{-- Retired --}}
@@ -338,7 +342,7 @@
                         <input type="date" class="form-control" id="date_of_retirement" name="date_of_retirement" value="{{$alumnus->date_retired}}">
                     </div>
                 </div>
-            </div> -
+            </div>
             <div class="d-grid pt-3">
                 <button class="btn btn-block text-light bg-darkgreen">Save</button>
             </div>
