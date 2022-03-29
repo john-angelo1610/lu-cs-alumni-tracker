@@ -21,6 +21,11 @@ h3 {
   font-size: 18px;
 }
 
+textarea {
+  resize: none;
+  height: 250px;
+}
+
 .bg-darkgreen {
   background-color: #0B4619;
 }
@@ -60,8 +65,11 @@ nav img {
   font-size: 32px;
 }
 
-#news .card .card-body button {
+#news .card .card-body a {
   width: 100%;
+}
+#news .card .card-body p {
+  text-align: justify;
 }
 #news .card .card-footer {
   font-size: 12px;
@@ -74,13 +82,22 @@ footer img {
   height: 95px;
 }
 
-#list tbody a, #archive tbody a {
+#list tbody a, #list tbody button, #archive tbody a, #archive tbody button, #post_list tbody a, #post_list tbody button {
   text-decoration: none;
   color: #fff;
 }
-#list tbody a:hover, #archive tbody a:hover {
+#list tbody a:hover, #list tbody button:hover, #archive tbody a:hover, #archive tbody button:hover, #post_list tbody a:hover, #post_list tbody button:hover {
   text-decoration: underline;
   color: #87C38F;
+}
+#list tbody form, #archive tbody form, #post_list tbody form {
+  display: inline;
+}
+#list tbody form button, #archive tbody form button, #post_list tbody form button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 #view_alumnus a {

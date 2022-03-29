@@ -64,12 +64,12 @@
                 <label for="civil_status" class="col-md-3 col-form-label">Civil Status <em class="text-warning">(required)</em></label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="civil_status" id="civil_status" name="civil_status">
-                        <option value="1">Single</option>
-                        <option value="2">Married</option>
-                        <option value="3">Single Parent</option>
-                        <option value="4">Widow/Widower</option>
-                        <option value="5">Separated</option>
-                        <option value="6">Annulled</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Single Parent">Single Parent</option>
+                        <option value="Widow/Widower">Widow/Widower</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Annuled">Annulled</option>
                     </select>
                 </div>
             </div>
@@ -159,7 +159,7 @@
                     <input type="text" class="form-control" placeholder="School" name="diploma">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="diploma_batch">
+                    <input type="text" class="form-control" placeholder="School Year" name="diploma_batch">
                 </div>
             </div>
             <p class="text-warning text-uppercase">Graduate Studies</p>
@@ -172,7 +172,7 @@
                     <input type="text" class="form-control" placeholder="School" name="masteral">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="masteral_batch">
+                    <input type="text" class="form-control" placeholder="School Year" name="masteral_batch">
                 </div>
             </div>
             <p>Doctoral's Degree</p>
@@ -184,7 +184,7 @@
                     <input type="text" class="form-control" placeholder="School" name="doctoral">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="doctoral_batch">
+                    <input type="text" class="form-control" placeholder="School Year" name="doctoral_batch">
                 </div>
             </div>
             <p>Professional's License Earned</p>

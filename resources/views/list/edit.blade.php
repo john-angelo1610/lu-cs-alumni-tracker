@@ -159,20 +159,20 @@
                     <input type="text" class="form-control" placeholder="School" name="diploma" value="{{$alumnus->diploma_school}}">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="diploma_batch" value="{{$alumnus->diploma_year}}">
+                    <input type="text" class="form-control" placeholder="School Year" name="diploma_batch" value="{{$alumnus->diploma_year}}">
                 </div>
             </div>
             <p class="text-warning text-uppercase">Graduate Studies</p>
             <p>Masteral's Degree</p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="Course" name="masteral_course" value="{{$alumnus->masteral_year}}">
+                    <input type="text" class="form-control" placeholder="Course" name="masteral_course" value="{{$alumnus->masteral_course}}">
                 </div>
                 <div class="col-md">
                     <input type="text" class="form-control" placeholder="School" name="masteral" value="{{$alumnus->masteral_school}}">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="diploma_batch" value="{{$alumnus->masteral_year}}">
+                    <input type="text" class="form-control" placeholder="School Year" name="masteral_batch" value="{{$alumnus->masteral_year}}">
                 </div>
             </div>
             <p>Doctoral's Degree</p>
@@ -184,7 +184,7 @@
                     <input type="text" class="form-control" placeholder="School" name="doctoral" value="{{$alumnus->doctoral_school}}">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="diploma_batch" value="{{$alumnus->doctoral_year}}">
+                    <input type="text" class="form-control" placeholder="School Year" name="doctoral_batch" value="{{$alumnus->doctoral_year}}">
                 </div>
             </div>
             <p>Professional's License Earned</p>

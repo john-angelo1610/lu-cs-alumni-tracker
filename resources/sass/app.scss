@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-
 $darkgreen: #0B4619;
 $lightgreen: #87C38F;
 $maingreen: #116530;
@@ -26,6 +25,11 @@ h2 {
 
 h3 {
     font-size: 18px;
+}
+
+textarea{
+    resize: none;
+    height: 250px;
 }
 
 .bg-darkgreen{
@@ -74,8 +78,11 @@ nav {
 #news {
     .card {
         .card-body{
-            button{
+            a {
                 width: 100%;
+            }
+            p {
+                text-align: justify;
             }
         }
 
@@ -94,15 +101,24 @@ footer {
     }
 }
 
-#list, #archive{
+#list, #archive, #post_list{
     tbody {
-        a {
+        a, button {
             text-decoration: none;
             color: #fff;
         }
-        a:hover{
+        a:hover, button:hover{
             text-decoration: underline;
             color: $lightgreen;
+        }
+        form {
+            display: inline;
+            button{
+                margin: 0;
+                padding: 0;
+                background: transparent;
+                border: 0;
+            }
         }
     }
 }

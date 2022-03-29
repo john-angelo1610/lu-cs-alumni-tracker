@@ -6,8 +6,8 @@
     <section id="list" class="pt-5 my-5 container">
         <h1 class="text-uppercase text-center">List of Alumni</h1>
         <h2 class="text-center">{{$bachelor_year}}</h2>
-        <div class="d-flex flex-wrap justify-content-between my-4">
-            <div class="btn-group">
+        <div class="clearfix my-4">
+            <div class="btn-group float-start">
                 <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Choose School Year
                 </button>
@@ -17,7 +17,7 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="/add" class="btn btn-outline-dark">Add Alumni <i class="fas fa-plus"></i></a>
+            <a href="/add" class="btn btn-outline-dark float-end">Add Alumni <i class="fas fa-plus"></i></a>
         </div>
         <table class="table table-responsive bg-maingreen text-white">
             <thead class="bg-darkgreen">

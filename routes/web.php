@@ -6,6 +6,7 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,18 @@ use App\Http\Controllers\ArchiveController;
 |
 */
 
+/* Post */
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::get('/{post}', [PagesController::class, 'show'])->name('post');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+// Add Posts
+Route::view('posts/add','posts.add');
+Route::post('/store', [PostController::class, 'store']);
+// Edit Posts
+Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('edit');
+Route::put('/update/{post}', [PostController::class, 'update']);
+// Delete Posts
+Route::delete('/delete/{post}', [PostController::class, 'destroy']);
 
 // List
 Route::get('/list/{school_year}', [ListController::class, 'index'])->name('list');
@@ -34,5 +46,6 @@ Route::put('/edit/{alumnus}', [ListController::class, 'update']);
 
 // Analytics
 Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
-// Delete
+
+// Archive
 Route::get('/archive', [ArchiveController::class, 'index'])->name('archive');

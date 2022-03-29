@@ -23,7 +23,7 @@
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Date of Birth:</p>
-                <p class="mx-2">{{$alumnus->date_of_birth}}</p>
+                <p class="mx-2">{{\Carbon\Carbon::createFromFormat('Y-m-d', $alumnus->date_of_birth)->format('F d, Y')}}</p>
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Sex:</p>
@@ -31,6 +31,7 @@
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Civil Status:</p>
+                
                 <p class="mx-2">{{$alumnus->civil_status}}</p>
             </div>
             <div class="d-flex align-items-center mb-3">
@@ -102,7 +103,7 @@
             <p class="fw-bold">Professional's License Earned:</p>
             <div class="d-flex align-items-center mb-3">
                 <p>{{$alumnus->license}}</p>
-                <p class="mx-3">{{$alumnus->license_date}}</p>
+                <p class="mx-3">{{\Carbon\Carbon::createFromFormat('Y-m-d', $alumnus->license_date)->format('F d, Y')}}</p>
                 <p>{{$alumnus->license_number}}</p>
             </div>
             <hr>
@@ -119,7 +120,7 @@
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Date Hired:</p>
-                <p class="mx-2">{{$alumnus->date_hired}}</p>
+                <p class="mx-2">{{\Carbon\Carbon::createFromFormat('Y-m-d', $alumnus->date_hired)->format('F d, Y')}}</p>
             </div>
             <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Name and Address of Company:</p>
@@ -179,7 +180,7 @@
                 </div>
                 <div class="d-flex align-items-center mb-3">
                     <p class="fw-bold">Date of retirement:</p>
-                    <p class="mx-2">{{$alumnus->date_retired}}</p>
+                    <p class="mx-2">{{\Carbon\Carbon::createFromFormat('Y-m-d', $alumnus->date_retired)->format('F d, Y')}}</p>
                 </div>
             @elseif (strtolower($alumnus->employment_status) == 'unemployed')
             <div class="d-flex align-items-center mb-3">

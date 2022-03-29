@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-class ListController extends Controller
-{
+class ListController extends Controller {
     public function index($school_year) {
         $bachelor_year = $school_year;
         $alumni = Student::all()->where('bachelor_year', $school_year);
@@ -57,7 +56,7 @@ class ListController extends Controller
             'bachelor_year' => request('bachelor_batch'),
             'diploma_course' => request('diploma_level'),
             'diploma_school' => request('diploma'),
-            'diploma_year' => request('diploma_course'),
+            'diploma_year' => request('diploma_batch'),
             'masteral_course' => request('masteral_course'),
             'masteral_school' => request('masteral'),
             'masteral_year' => request('masteral_batch'),
