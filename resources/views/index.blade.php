@@ -5,8 +5,8 @@
         <h2>Computer Science Alumni Tracker</h2>
     </section>
     <section id="news" class="container my-5">
-        <a href="/posts" class="btn btn-outline-dark ms-auto">Manage Post</a>
-        <h1 class="text-center my-5">News and Announcements</h1>
+        <a href="/posts" class="btn btn-outline-dark ms-auto mb-4">Manage Post</a>
+        <h1 class="text-center mb-5">News and Announcements</h1>
         @foreach ($posts as $post)
             <h2>{{$post->title}}</h2>
             <small>{{Carbon\Carbon::parse($post->date)->format('F d, Y')}}</small>
