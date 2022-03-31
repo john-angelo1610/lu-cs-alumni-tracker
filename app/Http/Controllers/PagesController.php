@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
     public function index() {
-        $posts = Post::all();
+        $posts = Post::orderBy('date', 'DESC')->limit(10)->get();
 
         return view('index', compact('posts'));
     }
