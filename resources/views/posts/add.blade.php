@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="content" class="col-md-3 col-form-label">Content</label>
-            <div class="col-md-9">
+            <label for="content" class="col-12 col-form-label">Content</label>
+            <div class="col-12">
                 <textarea class="form-control" id="content" name="content"></textarea>
             </div>
         </div>
