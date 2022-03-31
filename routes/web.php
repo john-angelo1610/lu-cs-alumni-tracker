@@ -19,10 +19,20 @@ use App\Http\Controllers\PostController;
 |
 */
 
-/* Post */
+// Home
 Route::get('/', [PagesController::class, 'index'])->name('home');
-Route::get('/{post}', [PagesController::class, 'show'])->name('post');
+// Analytics
+Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
+// Archive
+Route::get('/archive', [ArchiveController::class, 'index'])->name('archive');
+
+// Add Alumni
+Route::post('add', [AddController::class, 'addAlumni']);
+Route::view('add','add/index');
+
+/* Post */
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/{post}', [PagesController::class, 'show'])->name('post');
 // Add Posts
 Route::view('posts/add','posts.add');
 Route::post('/store', [PostController::class, 'store']);
@@ -36,16 +46,7 @@ Route::delete('/delete/{post}', [PostController::class, 'destroy']);
 Route::get('/list/{school_year}', [ListController::class, 'index'])->name('list');
 Route::get('/list/view/{id}', [ListController::class, 'show'])->name('view');
 
-// Add
-Route::post('add', [AddController::class, 'addAlumni']);
-Route::view('add','add/index');
 
 // Edit
 Route::get('/list/edit/{id}', [ListController::class, 'edit'])->name('edit');
 Route::put('/edit/{alumnus}', [ListController::class, 'update']);
-
-// Analytics
-Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
-
-// Archive
-Route::get('/archive', [ArchiveController::class, 'index'])->name('archive');
