@@ -23,7 +23,7 @@ h3 {
 
 textarea {
   resize: none;
-  height: 250px;
+  height: 500px;
 }
 
 .bg-darkgreen {
@@ -65,14 +65,15 @@ nav img {
   font-size: 32px;
 }
 
-#news .card .card-body a {
-  width: 100%;
+#news a {
+  display: block;
+  width: 130px;
 }
-#news .card .card-body p {
-  text-align: justify;
-}
-#news .card .card-footer {
+#news small {
   font-size: 12px;
+}
+#news p {
+  text-align: justify;
 }
 
 footer p {
@@ -125,6 +126,10 @@ footer img {
   }
 
   #view_alumnus .bg-maingreen {
+    width: 100%;
+  }
+
+  #news a.bg-darkgreen {
     width: 100%;
   }
 }
