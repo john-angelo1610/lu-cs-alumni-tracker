@@ -11,31 +11,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan A. Dela Cruz</td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan A. Dela Cruz</td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan A. Dela Cruz</td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan A. Dela Cruz</td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Juan A. Dela Cruz</td>
-                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                </tr>
+                @if ($archived_alumni->isEmpty())
+                    <tr>
+                        <th class="text-center" scope="row" colspan="3">No data available</th>
+                    </tr>
+                @else
+                    @foreach ($archived_alumni as $alumnus)
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</td>
+                            <td>
+                                <form action="/archive/destroy/{{$alumnus->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button><i class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </section>

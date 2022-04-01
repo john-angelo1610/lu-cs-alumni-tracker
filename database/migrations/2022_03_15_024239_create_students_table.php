@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentsTable extends Migration
-{
+class CreateStudentsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             /* Personal Info */
@@ -74,6 +72,7 @@ class CreateStudentsTable extends Migration
             $table->string('name_address_of_last_company')->nulllable()->default(NULL);
             $table->string('retired_reason')->nulllable()->default(NULL);
             $table->date('date_retired')->nulllable()->default('0000-00-00');
+            $table->boolean('is_archive')->nulllable()->default(0);
             $table->timestamps();
         });
     }
