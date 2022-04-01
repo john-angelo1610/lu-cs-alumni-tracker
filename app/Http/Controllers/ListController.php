@@ -6,9 +6,13 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ListController extends Controller {
+    public function __construct() {
+        $this->middleware(['auth', 'isAdmin']);
+    }
+
     public function index($school_year) {
         $bachelor_year = $school_year;
-        $alumni = Student::all()->where('bachelor_year', $school_year);
+        $alumni = Student::all()->where('bachelor_year', $school_year)->where('is_archive', 0);
         return view('list.index', compact('alumni', 'bachelor_year'));
     }
 
@@ -82,5 +86,12 @@ class ListController extends Controller {
         ]);
 
         return redirect('/list/view/'.$alumnus->id);
+    }
+
+    public function archive(Student $alumnus) {
+        $alumnus->update([
+            'is_archive' => request('is_archive')
+        ]);
+        return redirect('/list/'.$alumnus->bachelor_year);
     }
 }

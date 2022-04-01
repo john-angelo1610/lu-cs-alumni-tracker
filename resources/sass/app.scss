@@ -1,3 +1,5 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
 $darkgreen: #0B4619;
@@ -32,6 +34,10 @@ textarea{
     height: 500px;
 }
 
+.modal-backdrop {
+    z-index: -1;
+}
+
 .bg-darkgreen{
     background-color: $darkgreen;
 }
@@ -55,6 +61,24 @@ textarea{
 nav {
     img {
         height: 50px;
+    }
+    .modal-body {
+        .nav.nav-tabs {
+            button.nav-link.active{
+                color: #000;
+            }
+        }
+        form {
+            label.col-form-label, button {
+                color: #fff;
+            }
+            a.btn-link {
+                color: #fff;
+            }
+            a.btn-link:hover {
+                color: $grey;
+            }
+        }
     }
 }
 
@@ -107,23 +131,26 @@ footer {
             text-decoration: underline;
             color: $lightgreen;
         }
-        form {
-            display: inline;
-            button{
-                margin: 0;
-                padding: 0;
-                background: transparent;
-                border: 0;
-            }
+    }
+}
+
+#list, #archive, #post_list, #view_alumnus {
+    form {
+        display: inline;
+        button{
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: 0;
         }
     }
 }
 
 #view_alumnus{
-    a {
+    a, button {
         color: #fff;
     }
-    a:hover {
+    a:hover, button:hover {
         color: $grey;
     }
 }
@@ -131,6 +158,13 @@ footer {
 .add_edit_form{
     .self_employed, .unemployed, .retired, #unemployed_other_reason{
         display: none;
+    }
+}
+
+#analytics {
+    img {
+        width: 250px;
+        height: 200px;
     }
 }
 
@@ -160,6 +194,11 @@ footer {
     #view_alumnus{
         .bg-maingreen{
             width: 71%;
+        }
+    }
+    #analytics {
+        h2 {
+            text-transform: uppercase;
         }
     }
 }

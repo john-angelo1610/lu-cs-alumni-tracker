@@ -24,7 +24,7 @@
             <div class="col-lg-3 col-sm-6 my-4">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-uppercase card-title text-center my-2">Number of employed</h2>
+                        <h2 class="card-title text-center my-2">Number of employed</h2>
                         <h2 class="card-text text-center my-3">{{$employed}}</h2>
                     </div>
                     <img src="../storage/employed.png" class="card-img-bottom" alt="Employed">
@@ -33,16 +33,16 @@
             <div class="col-lg-3 col-sm-6 my-4">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-uppercase card-title text-center my-2">Number of self-employed</h2>
+                        <h2 class="card-title text-center my-2">Number of self-employed</h2>
                         <h2 class="card-text text-center my-3">{{$self_employed}}</h2>
                     </div>
-                    <img src="../storage/business.png" class="card-img-bottom" alt="Self=employed">
+                    <img src="../storage/business.png" class="card-img-bottom" alt="Self-employed">
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 my-4">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-uppercase card-title text-center my-2">Number of unemployed</h2>
+                        <h2 class="card-title text-center my-2">Number of unemployed</h2>
                         <h2 class="card-text text-center my-3">{{$unemployed}}</h2>
                     </div>
                     <img src="../storage/unemployed.png" class="card-img-bottom" alt="Unemployed">
@@ -51,7 +51,7 @@
             <div class="col-lg-3 col-sm-6 my-4">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="text-uppercase card-title text-center my-2">Number of retired</h2>
+                        <h2 class="card-title text-center my-2">Number of retired</h2>
                         <h2 class="card-text text-center my-3">{{$retired}}</h2>
                     </div>
                     <img src="../storage/retired.png" class="card-img-bottom" alt="Retired">

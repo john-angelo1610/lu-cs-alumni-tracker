@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="../../storage/cs.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>LU CS Alumni Tracker</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -29,28 +30,68 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="/">Home</a>
+                        <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('list*')) ? 'active' : '' }}" href="/list/S.Y. 2006 - 2007">List of Alumni</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('analytics*')) ? 'active' : '' }}" href="/analytics">Analytics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('archive*')) ? 'active' : '' }}" href="/archive">Archive</a>
-                    </li>
-                    <li class="nav-item dropstart">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
+                    @if (Auth::user())
+                        @if (Auth::user()->user_type == 'Admin')
+                            <li class="nav-item">
+                                <a class="nav-link {{ (request()->is('list*')) ? 'active' : '' }}" href="/list/S.Y. 2006 - 2007">List of Alumni</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ (request()->is('analytics*')) ? 'active' : '' }}" href="/analytics">Analytics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ (request()->is('archive*')) ? 'active' : '' }}" href="/archive">Archive</a>
+                            </li>
+                        @endif
+                    @endif
+                    @guest
+                        {{-- Button --}}
+                        <li class="nav-item">
+                            <a type="button" href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">Login</a>
+                        </li>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="loginRegisterModal" tabindex="-1" aria-labelledby="loginRegisterModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body bg-maingreen">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                                @include('auth.login')
+                                            </div>
+                                            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                                @include('auth.register')
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <li class="nav-item dropstart">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -80,7 +121,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="../../js/app.js"></script>
 </body>

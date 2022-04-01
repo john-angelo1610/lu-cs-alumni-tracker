@@ -18,17 +18,22 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 // Home
 Route::get('/', [PagesController::class, 'index'])->name('home');
+
 // Analytics
 Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
-// Archive
+// View Archive
 Route::get('/archive', [ArchiveController::class, 'index'])->name('archive');
 
 // Add Alumni
 Route::post('add', [AddController::class, 'addAlumni']);
-Route::view('add','add/index');
+Route::middleware(['auth', 'isAdmin'])
+    ->group(function () {
+        Route::view('add','add/index');
+    });
 
 /* Post */
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
@@ -46,7 +51,12 @@ Route::delete('/delete/{post}', [PostController::class, 'destroy']);
 Route::get('/list/{school_year}', [ListController::class, 'index'])->name('list');
 Route::get('/list/view/{id}', [ListController::class, 'show'])->name('view');
 
-
 // Edit
 Route::get('/list/edit/{id}', [ListController::class, 'edit'])->name('edit');
 Route::put('/edit/{alumnus}', [ListController::class, 'update']);
+
+// Archive the alumni
+Route::put('/archive/{alumnus}', [ListController::class, 'archive']);
+
+// Delete alumni
+Route::delete('/archive/destroy/{id}', [ArchiveController::class, 'destroy']);

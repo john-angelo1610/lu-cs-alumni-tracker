@@ -2,7 +2,16 @@
 @section('content')
     <section id="view_alumnus" class="container my-5 pt-5 d-flex justify-content-center">
         <div class="bg-maingreen p-5 text-light rounded">
-            <div class="float-end"><a href="../edit/{{$alumnus->id}}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;<a href="#"><i class="fas fa-archive"></i></a></div>
+            <div class="float-end">
+                <a href="../edit/{{$alumnus->id}}"><i class="fas fa-edit"></i></a>
+                &nbsp;&nbsp;&nbsp;
+                <form action="/archive/{{$alumnus->id}}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <input type="hidden" name="is_archive" value="1">
+                    <button><i class="fas fa-archive"></i></button>
+                </form>
+            </div>
             <h2 class="text-center mb-4">{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</h2>
             <hr>
             <h3 class="text-uppercase text-center">Personal Information</h3>
