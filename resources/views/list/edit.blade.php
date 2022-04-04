@@ -24,6 +24,12 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
+                <label for="student_number" class="col-md-3 col-form-label">Student Number</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="student_number" name="student_number" value="{{$alumnus->student_number}}">
+                </div>
+            </div>
+            <div class="row align-items-center mb-3">
                 <label for="spouse" class="col-md-3 col-form-label">Name of spouse</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control" id="spouse" name="spouse" value="{{$alumnus->spouse_name}}">

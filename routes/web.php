@@ -7,6 +7,7 @@ use App\Http\Controllers\AddController;
 use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics');
 // View Archive
 Route::get('/archive', [ArchiveController::class, 'index'])->name('archive');
+
+// Profile View
+Route::get('/profile', [ProfileController::class, 'index'])->name('index');
 
 // Add Alumni
 Route::post('add', [AddController::class, 'addAlumni']);
@@ -60,3 +64,7 @@ Route::put('/archive/{alumnus}', [ListController::class, 'archive']);
 
 // Delete alumni
 Route::delete('/archive/destroy/{id}', [ArchiveController::class, 'destroy']);
+
+// Edit Alumni Profile
+Route::put('/profile/add/{id}', [ProfileController::class, 'addStdNum']);
+Route::put('/profile/updateAlumnusData/{id}', [ProfileController::class, 'updateAlumnusData']);

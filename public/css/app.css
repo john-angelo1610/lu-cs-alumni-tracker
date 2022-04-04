@@ -11375,8 +11375,16 @@ nav .modal-body form a.btn-link:hover {
   text-align: justify;
 }
 
-footer p {
+footer p, footer a {
   font-size: 16px;
+}
+footer a {
+  text-decoration: none;
+  color: #fff;
+}
+footer a:hover {
+  color: #B8BDB5;
+  text-decoration: underline;
 }
 footer img {
   height: 95px;
@@ -11415,6 +11423,10 @@ footer img {
 #analytics img {
   width: 250px;
   height: 200px;
+}
+
+#wait_box {
+  height: 50vh;
 }
 
 @media (max-width: 767.98px) {

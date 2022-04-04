@@ -2,31 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
-class ListController extends Controller {
-    public function __construct() {
-        $this->middleware(['auth', 'isAdmin']);
+class ProfileController extends Controller {
+    public function index() {
+        $user = auth()->user();
+        if ($user->user_type == 'Admin') {
+            return view('profile.admin');
+        } else {
+            $alumnus = User::join('students', 'users.student_number', "=", 'students.student_number')
+            ->where('users.student_number', $user->student_number)
+            ->get();
+            return view('profile.index', compact('alumnus'));
+        }
     }
 
-    public function index($school_year) {
-        $bachelor_year = $school_year;
-        $alumni = Student::all()->where('bachelor_year', $school_year)->where('is_archive', 0);
-        return view('list.index', compact('alumni', 'bachelor_year'));
+    public function addStdNum(User $id){
+        // dd(request()->all());
+        $id->update(['student_number' => request('student_number')]);
+        return redirect('/profile');
     }
 
-    public function show($id) {
-        $alumnus = Student::FindOrFail($id);
-        return view('list.view', compact('alumnus'));
-    }
-
-    public function edit($id) {
-        $alumnus = Student::FindOrFail($id);
-        return view('list.edit', compact('alumnus'));
-    }
-
-    public function update(Student $alumnus){
+    public function updateAlumnusData(Student $id){
         // dd(request()->all());
         // request()->validate([
         //     'first_name' => 'required',
@@ -36,8 +37,7 @@ class ListController extends Controller {
         //     'sex' => 'required',
         //     'civil_status' => 'required'
         // ]);
-        $alumnus->update([
-            'student_number' => request('student_number'),
+        $id->update([
             'first_name' => request('first_name'),
             'middle_name' => request('middle_name'),
             'last_name' => request('last_name'),
@@ -86,13 +86,10 @@ class ListController extends Controller {
             'date_retired' => request('date_of_retirement')
         ]);
 
-        return redirect('/list/view/'.$alumnus->id);
+        return redirect('/profile');
     }
 
-    public function archive(Student $alumnus) {
-        $alumnus->update([
-            'is_archive' => request('is_archive')
-        ]);
-        return redirect('/list/'.$alumnus->bachelor_year);
+    public function updateAdmin() {
+        $user = auth()->user();
     }
 }

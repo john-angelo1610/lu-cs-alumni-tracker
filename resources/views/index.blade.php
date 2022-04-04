@@ -4,6 +4,7 @@
         <h1>Laguna University</h1>
         <h2>Computer Science Alumni Tracker</h2>
     </section>
+
     <section id="news" class="container my-5">
         @if (Auth::user())
             @if (Auth::user()->user_type == 'Admin')

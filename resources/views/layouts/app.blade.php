@@ -82,7 +82,7 @@
                                 <i class="fas fa-user-circle"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="/profile/">Profile</a></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -115,7 +115,7 @@
                     <p class="fw-bold text-uppercase">Connect with us</p>
                     <p><i class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;/LagunaUniversityOfficial</p>
                     <p><i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;/lagunauniversityofficial</p>
-                    <p><i class="fas fa-globe"></i>&nbsp;&nbsp;&nbsp;lu.edu.ph</p>
+                    <a href="https://lu.edu.ph/" target="_blank"><i class="fas fa-globe"></i>&nbsp;&nbsp;&nbsp;lu.edu.ph</a>
                 </div>
             </div>
         </div>

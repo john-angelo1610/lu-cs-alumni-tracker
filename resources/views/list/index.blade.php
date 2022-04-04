@@ -22,7 +22,7 @@
         <table class="table table-responsive bg-maingreen text-white">
             <thead class="bg-darkgreen">
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Student Number</th>
                     <th scope="col">Name</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                 @else
                     @foreach ($alumni as $alumnus)
                         <tr>
-                            <th scope="row">{{$alumnus->id}}</th>
+                            <th scope="row">{{$alumnus->student_number}}</th>
                             <td><a href="../list/view/{{$alumnus->id}}">{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</a></td>
                         </tr>
                     @endforeach

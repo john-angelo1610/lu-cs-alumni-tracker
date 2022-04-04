@@ -14,14 +14,15 @@ class CreateStudentsTable extends Migration {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             /* Personal Info */
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
+            $table->string('student_number')->nulllable()->default(NULL);
+            $table->string('first_name')->nulllable()->default(NULL);
+            $table->string('middle_name')->nulllable()->default(NULL);
+            $table->string('last_name')->nulllable()->default(NULL);
             $table->string('spouse_name')->nulllable()->default(NULL);
             $table->boolean('married_to_alumnus')->nulllable()->default(NULL);
-            $table->date('date_of_birth');
-            $table->string('sex');
-            $table->string('civil_status');
+            $table->date('date_of_birth')->nulllable()->default('0000-00-00');;
+            $table->string('sex')->nulllable()->default(NULL);;
+            $table->string('civil_status')->nulllable()->default(NULL);;
             $table->integer('number_of_children')->nulllable()->default(0);
             $table->string('landline')->nulllable()->default(NULL);
             $table->string('mobile')->nulllable()->default(NULL);
@@ -36,11 +37,11 @@ class CreateStudentsTable extends Migration {
             $table->string('secondary_school')->nulllable()->default(NULL);
             $table->string('secondary_year')->nulllable()->default(NULL);
             // bachelor
-            $table->string('bachelor_course');
-            $table->string('bachelor_school');
-            $table->string('bachelor_year');
+            $table->string('bachelor_course')->nulllable()->default('Computer Science');
+            $table->string('bachelor_school')->nulllable()->default('Laguna University');
+            $table->string('bachelor_year')->nulllable()->default(NULL);
             // Diploma/Certificate
-            $table->string('diploma_course')->nulllable()->default(NULL);
+            $table->string('diploma_course')->nulllable()->default(NULL);   
             $table->string('diploma_school')->nulllable()->default(NULL);
             $table->string('diploma_year')->nulllable()->default(NULL);
             // Masteral

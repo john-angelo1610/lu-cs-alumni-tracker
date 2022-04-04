@@ -17,6 +17,7 @@ class AddController extends Controller{
         // ]);
 
         Student::create([
+            'student_number' => $request->student_number,
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,

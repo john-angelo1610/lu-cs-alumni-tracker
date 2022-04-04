@@ -17,6 +17,10 @@
             <h3 class="text-uppercase text-center">Personal Information</h3>
             <hr>
             <div class="d-flex align-items-center mb-3">
+                <p class="fw-bold">Student Number:</p>
+                <p class="mx-2">{{$alumnus->student_number}}</p>
+            </div>
+            <div class="d-flex align-items-center mb-3">
                 <p class="fw-bold">Name of spouse:</p>
                 <p class="mx-2">{{$alumnus->spouse_name}}</p>
             </div>
