@@ -57,7 +57,6 @@ class ListController extends Controller {
             'secondary_school' => request('secondary'),
             'secondary_year' => request('secondary_batch'),
             'bachelor_course' => request('bachelor_course'),
-            'bachelor_school' => request('bachelor'),
             'bachelor_year' => request('bachelor_batch'),
             'diploma_course' => request('diploma_level'),
             'diploma_school' => request('diploma'),

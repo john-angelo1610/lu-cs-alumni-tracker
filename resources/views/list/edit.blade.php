@@ -146,7 +146,7 @@
                     <input type="text" class="form-control" placeholder="Course" name="bachelor_course" value="{{$alumnus->bachelor_course}}">
                 </div>
                 <div class="col-md">
-                    <input type="text" class="form-control" placeholder="School" name="bachelor" value="{{$alumnus->bachelor_school}}">
+                    {{$alumnus->bachelor_school}}
                 </div>
                 <div class="col-md">
                     <select class="form-select" aria-label="bachelor_batch" id="bachelor_batch" name="bachelor_batch">
