@@ -113,9 +113,9 @@
                 </div>
                 <div class="col-lg-4 my-3">
                     <p class="fw-bold text-uppercase">Connect with us</p>
-                    <p><i class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;/LagunaUniversityOfficial</p>
-                    <p><i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;/lagunauniversityofficial</p>
-                    <a href="https://lu.edu.ph/" target="_blank"><i class="fas fa-globe"></i>&nbsp;&nbsp;&nbsp;lu.edu.ph</a>
+                    <p><i class="fab fa-facebook"></i>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/LagunaUniversityOfficial/" target="_blank">/LagunaUniversityOfficial</a></p>
+                    <p><i class="fab fa-instagram"></i>&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/lagunauniversityofficial/" target="_blank">/lagunauniversityofficial</a></p>
+                    <p><i class="fas fa-globe"></i>&nbsp;&nbsp;&nbsp;<a href="https://lu.edu.ph/" target="_blank">lu.edu.ph</a></p>
                 </div>
             </div>
         </div>
