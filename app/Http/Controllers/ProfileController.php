@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Student;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -22,7 +22,6 @@ class ProfileController extends Controller {
     }
 
     public function addStdNum(User $id){
-        // dd(request()->all());
         $id->update(['student_number' => request('student_number')]);
         return redirect('/profile');
     }
@@ -89,7 +88,13 @@ class ProfileController extends Controller {
         return redirect('/profile');
     }
 
-    public function updateAdmin() {
-        $user = auth()->user();
+    public function updateAdminPassword(User $id) {
+        request()->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+        $id->update([
+            'password' => Hash::make(request('password'))
+        ]);
+        return redirect('/profile');
     }
 }

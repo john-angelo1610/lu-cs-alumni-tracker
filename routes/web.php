@@ -68,3 +68,4 @@ Route::delete('/archive/destroy/{id}', [ArchiveController::class, 'destroy']);
 // Edit Alumni Profile
 Route::put('/profile/add/{id}', [ProfileController::class, 'addStdNum']);
 Route::put('/profile/updateAlumnusData/{id}', [ProfileController::class, 'updateAlumnusData']);
+Route::put('/profile/updateAdminPassword/{id}', [ProfileController::class, 'updateAdminPassword']);
