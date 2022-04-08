@@ -5,6 +5,16 @@
         @csrf
         <h2 class="text-center mb-4">Add Post</h2>
         <hr>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <p><strong>Opps Something went wrong</strong></p>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row align-items-center mb-3">
             <label for="title" class="col-md-3 col-form-label">Title</label>
             <div class="col-md-9">
