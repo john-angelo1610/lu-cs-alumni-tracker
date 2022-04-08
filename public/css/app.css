@@ -11409,10 +11409,10 @@ footer img {
   border: 0;
 }
 
-#view_alumnus a, #view_alumnus button {
+#view_alumnus a, #view_alumnus button, #please_verify a, #please_verify button {
   color: #fff;
 }
-#view_alumnus a:hover, #view_alumnus button:hover {
+#view_alumnus a:hover, #view_alumnus button:hover, #please_verify a:hover, #please_verify button:hover {
   color: #B8BDB5;
 }
 

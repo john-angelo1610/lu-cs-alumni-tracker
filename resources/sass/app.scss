@@ -154,7 +154,7 @@ footer {
     }
 }
 
-#view_alumnus{
+#view_alumnus, #please_verify{
     a, button {
         color: #fff;
     }
@@ -200,9 +200,6 @@ footer {
             width: 100%;
         }
     }
-}
-#admin_profile {
-    
 }
 
 @media (min-width: 992px) {

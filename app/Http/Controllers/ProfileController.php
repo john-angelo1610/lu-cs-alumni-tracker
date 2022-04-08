@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller {
+    public function __construct() {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function index() {
         $user = auth()->user();
         if ($user->user_type == 'Admin') {
