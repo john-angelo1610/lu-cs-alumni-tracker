@@ -27,15 +27,13 @@ class ListController extends Controller {
     }
 
     public function update(Student $alumnus){
-        // dd(request()->all());
-        // request()->validate([
-        //     'first_name' => 'required',
-        //     'middle_name' => 'required',
-        //     'last_name' => 'required',
-        //     'date_of_birth' => 'required',
-        //     'sex' => 'required',
-        //     'civil_status' => 'required'
-        // ]);
+        request()->validate([
+            'student_number' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'bachelor_batch' => 'required'
+        ]);
+
         $alumnus->update([
             'student_number' => request('student_number'),
             'first_name' => request('first_name'),

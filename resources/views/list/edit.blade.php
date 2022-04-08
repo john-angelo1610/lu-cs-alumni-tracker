@@ -7,10 +7,20 @@
         <form class="bg-maingreen p-5 text-light rounded" action="/edit/{{$alumnus->id}}" method="POST">
             @method('PUT')
             @csrf
-            <h1 class="text-center mb-4">{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</h1>
+            <h1 class="text-center mb-4">{{$alumnus->first_name}} {{$alumnus->middle_name ? substr($alumnus->middle_name,0,1).'.' : ''}} {{$alumnus->last_name}}</h1>
             <hr>
             <h3 class="text-uppercase text-center">Personal Information</h3>
             <hr>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <p><strong>Opps Something went wrong</strong></p>
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+            @endif
             <p>Name <em class="text-warning">(required)</em></p>
             <div class="row align-items-center mb-3 g-3">
                 <div class="col-md">
@@ -24,7 +34,7 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="student_number" class="col-md-3 col-form-label">Student Number</label>
+                <label for="student_number" class="col-md-3 col-form-label">Student Number <em class="text-warning">(required)</em></label>
                 <div class="col-md-9">
                     <input type="text" class="form-control" id="student_number" name="student_number" value="{{$alumnus->student_number}}">
                 </div>
@@ -49,13 +59,13 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="date_of_birth" class="col-md-3 col-form-label">Date of Birth <em class="text-warning">(required)</em></label>
+                <label for="date_of_birth" class="col-md-3 col-form-label">Date of Birth </label>
                 <div class="col-md-9">
                     <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{$alumnus->date_of_birth}}">
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label class="col-md-3 col-form-label">Sex <em class="text-warning">(required)</em></label>
+                <label class="col-md-3 col-form-label">Sex </label>
                 <div class="col-md-9">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sex" id="male" value="Male" {{strtolower($alumnus->sex) == 'male' ? 'checked' : ''}}>
@@ -68,7 +78,7 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="civil_status" class="col-md-3 col-form-label">Civil Status <em class="text-warning">(required)</em></label>
+                <label for="civil_status" class="col-md-3 col-form-label">Civil Status </label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="civil_status" id="civil_status" name="civil_status">
                         <option value="Single" {{strtolower($alumnus->civil_status) == 'single' ? 'selected' : ''}}>Single</option>

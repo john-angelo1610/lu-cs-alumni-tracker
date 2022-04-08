@@ -6,10 +6,6 @@
     @php
         $user = auth()->user();
     @endphp
-    {{-- <h1 class="display-1 text-center">{{var_dump($user->user_type)}}</h1>
-    <h1 class="display-1 text-center">{{var_dump($user->email)}}</h1>
-    <h1 class="display-1 text-center">{{var_dump($user->name)}}</h1>
-    <h1 class="display-1 text-center">{{var_dump($user->id)}}</h1> --}}
     <section id="user_profile" class="container my-5 pt-5 add_edit_form">
         @if ($user->student_number == NULL)
             <div class="row justify-content-center">
@@ -39,10 +35,20 @@
             <form class="bg-maingreen p-5 text-light rounded" action="../profile/updateAlumnusData/{{$alumnus[0]->id}}" method="POST">
                 @method('PUT')
                 @csrf
-                <h1 class="text-center mb-4">{{$alumnus[0]->first_name}} {{substr($alumnus[0]->middle_name,0,1)}}. {{$alumnus[0]->last_name}}</h1>
+                <h1 class="text-center mb-4">Alumni Tracking Form</h1>
                 <hr>
                 <h3 class="text-uppercase text-center">Personal Information</h3>
                 <hr>
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <p><strong>Opps Something went wrong</strong></p>
+                        <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <p>Name <em class="text-warning">(required)</em></p>
                 <div class="row align-items-center mb-3 g-3">
                     <div class="col-md">
@@ -131,7 +137,7 @@
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                    <label for="email" class="col-md-3 col-form-label">Email Address</label>
+                    <label for="email" class="col-md-3 col-form-label">Email Address <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <input type="email" class="form-control" id="email" name="email" value="{{$alumnus[0]->email}}">
                     </div>
@@ -178,7 +184,7 @@
                         <input type="text" class="form-control" placeholder="Course" name="bachelor_course" value="{{$alumnus[0]->bachelor_course}}">
                     </div>
                     <div class="col-md">
-                        <input type="text" class="form-control" placeholder="School" name="bachelor" value="{{$alumnus[0]->bachelor_school}}">
+                        {{$alumnus[0]->bachelor_school}}
                     </div>
                     <div class="col-md">
                         <select class="form-select" aria-label="bachelor_batch" id="bachelor_batch" name="bachelor_batch">
@@ -243,7 +249,7 @@
                 <p class="text-warning text-uppercase">Current/Last Employment</p>
                 <div class="row align-items-center mb-3 g-2">
                     <div class="col-md">
-                        <input type="text" class="form-control" placeholder="Position" name="position" value="{{$alumnus[0]->position}}">
+                        <input type="text" class="form-control" placeholder="Position (required)" name="position" value="{{$alumnus[0]->position}}">
                     </div>
                     <div class="col-md">
                         <select class="form-select" aria-label="related" id="related" name="related">
@@ -253,19 +259,19 @@
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                    <label for="date_hired" class="col-md-3 col-form-label">Date Hired</label>
+                    <label for="date_hired" class="col-md-3 col-form-label">Date Hired <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <input type="date" class="form-control" id="date_hired" name="date_hired" value="{{$alumnus[0]->date_hired}}">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                    <label for="company" class="col-md-3 col-form-label">Name and Address of Company</label>
+                    <label for="company" class="col-md-3 col-form-label">Name and Address of Company <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <input type="text" class="form-control" id="company" name="company" value="{{$alumnus[0]->company}}">
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                    <label for="current_job_position" class="col-md-3 col-form-label">Job and Level Position (Current Job)</label>
+                    <label for="current_job_position" class="col-md-3 col-form-label">Job and Level Position (Current Job) <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <select class="form-select" aria-label="current_job_position" id="current_job_position" name="current_job_position">
                             <option value="1" {{strtolower($alumnus[0]->current_job_position) == 1 ? 'selected' : ''}}>Rank & File</option>
@@ -276,7 +282,7 @@
                     </div>
                 </div>
                 <div class="row align-items-center mb-3">
-                    <label for="first_job_position" class="col-md-3 col-form-label">Job and Level Position (First Job)</label>
+                    <label for="first_job_position" class="col-md-3 col-form-label">Job and Level Position (First Job) <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <select class="form-select" aria-label="first_job_position" id="first_job_position" name="first_job_position">
                             <option value="1" {{strtolower($alumnus[0]->first_job_position) == 1 ? 'selected' : ''}}>Rank & File</option>
@@ -287,7 +293,7 @@
                     </div>
                 </div>
                 <div class="row align-items-center mb-4">
-                    <label for="status" class="col-md-3 col-form-label">Employment Status</label>
+                    <label for="status" class="col-md-3 col-form-label">Employment Status <em class="text-warning">(required)</em></label>
                     <div class="col-md-9">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="status" id="employed" value="employed" {{strtolower($alumnus[0]->employment_status) != 'self-employed' || strtolower($alumnus[0]->employment_status) != 'unemployed' || strtolower($alumnus[0]->employment_status) != 'retired' ? 'checked' : ''}}>

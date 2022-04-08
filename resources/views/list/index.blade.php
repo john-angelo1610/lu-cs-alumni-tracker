@@ -35,7 +35,7 @@
                     @foreach ($alumni as $alumnus)
                         <tr>
                             <th scope="row">{{$alumnus->student_number}}</th>
-                            <td><a href="../list/view/{{$alumnus->id}}">{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</a></td>
+                            <td><a href="../list/view/{{$alumnus->id}}">{{$alumnus->first_name}} {{$alumnus->middle_name ? substr($alumnus->middle_name,0,1).'.' : ''}} {{$alumnus->last_name}}</a></td>
                         </tr>
                     @endforeach
                 @endif

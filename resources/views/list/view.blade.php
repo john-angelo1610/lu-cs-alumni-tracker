@@ -12,7 +12,7 @@
                     <button><i class="fas fa-archive"></i></button>
                 </form>
             </div>
-            <h2 class="text-center mb-4">{{$alumnus->first_name}} {{substr($alumnus->middle_name,0,1)}}. {{$alumnus->last_name}}</h2>
+            <h2 class="text-center mb-4">{{$alumnus->first_name}} {{$alumnus->middle_name ? substr($alumnus->middle_name,0,1).'.' : ''}} {{$alumnus->last_name}}</h2>
             <hr>
             <h3 class="text-uppercase text-center">Personal Information</h3>
             <hr>

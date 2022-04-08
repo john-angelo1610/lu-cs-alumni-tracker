@@ -23,19 +23,27 @@ class ProfileController extends Controller {
 
     public function addStdNum(User $id){
         $id->update(['student_number' => request('student_number')]);
+
+        Student::create(['student_number' => request('student_number')]);
         return redirect('/profile');
     }
 
     public function updateAlumnusData(Student $id){
-        // dd(request()->all());
-        // request()->validate([
-        //     'first_name' => 'required',
-        //     'middle_name' => 'required',
-        //     'last_name' => 'required',
-        //     'date_of_birth' => 'required',
-        //     'sex' => 'required',
-        //     'civil_status' => 'required'
-        // ]);
+        request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'date_of_birth' => 'required',
+            'sex' => 'required',
+            'civil_status' => 'required',
+            'email' => 'required|email',
+            'bachelor_course' => 'required',
+            'bachelor_batch' => 'required',
+            'position' => 'required',
+            'date_hired' => 'required',
+            'current_job_position' => 'required',
+            'first_job_position' => 'required',
+            'status' => 'required'
+        ]);
         $id->update([
             'first_name' => request('first_name'),
             'middle_name' => request('middle_name'),
@@ -56,7 +64,6 @@ class ProfileController extends Controller {
             'secondary_school' => request('secondary'),
             'secondary_year' => request('secondary_batch'),
             'bachelor_course' => request('bachelor_course'),
-            'bachelor_school' => request('bachelor'),
             'bachelor_year' => request('bachelor_batch'),
             'diploma_course' => request('diploma_level'),
             'diploma_school' => request('diploma'),
