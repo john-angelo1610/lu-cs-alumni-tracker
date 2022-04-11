@@ -23,10 +23,15 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="student_number" class="col-md-3 col-form-label">Student Number</label>
+                <label for="student_number" class="col-md-3 col-form-label">Student Number <em class="text-warning">(required)</em></label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="student_number" name="student_number">
+                    <input type="text" class="form-control @error('student_number') is-invalid @enderror" id="student_number" name="student_number">
                 </div>
+                @error('student_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="row align-items-center mb-3">
                 <label for="spouse" class="col-md-3 col-form-label">Name of spouse</label>
@@ -48,13 +53,13 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="date_of_birth" class="col-md-3 col-form-label">Date of Birth <em class="text-warning">(required)</em></label>
+                <label for="date_of_birth" class="col-md-3 col-form-label">Date of Birth</label>
                 <div class="col-md-9">
                     <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label class="col-md-3 col-form-label">Sex <em class="text-warning">(required)</em></label>
+                <label class="col-md-3 col-form-label">Sex</label>
                 <div class="col-md-9">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="sex" id="male" value="male">
@@ -67,7 +72,7 @@
                 </div>
             </div>
             <div class="row align-items-center mb-3">
-                <label for="civil_status" class="col-md-3 col-form-label">Civil Status <em class="text-warning">(required)</em></label>
+                <label for="civil_status" class="col-md-3 col-form-label">Civil Status</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="civil_status" id="civil_status" name="civil_status">
                         <option value="Single">Single</option>
